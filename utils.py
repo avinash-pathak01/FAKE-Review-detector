@@ -7,8 +7,8 @@ nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 
 # Load model
-model = joblib.load('model/model.pkl')
-vectorizer = joblib.load('model/vectorizer.pkl')
+model = joblib.load('model.pkl')
+vectorizer = joblib.load('vectorizer.pkl')
 
 def clean_text(text):
     text = text.lower()
