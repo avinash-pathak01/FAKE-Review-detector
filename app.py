@@ -2,8 +2,8 @@ from utils import predict_review, clean_text
 import joblib
 
 # Load model + vectorizer
-model = joblib.load('model/model.pkl')
-vectorizer = joblib.load('model/vectorizer.pkl')
+model = joblib.load('model.pkl')
+vectorizer = joblib.load('vectorizer.pkl')
 
 # Page config
 st.set_page_config(
