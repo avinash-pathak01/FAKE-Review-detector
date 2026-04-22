@@ -1,0 +1,25 @@
+import joblib
+import string
+import nltk
+from nltk.corpus import stopwords
+
+nltk.download('stopwords')
+stop_words = set(stopwords.words('english'))
+
+# Load model
+model = joblib.load('model/model.pkl')
+vectorizer = joblib.load('model/vectorizer.pkl')
+
+def clean_text(text):
+    text = text.lower()
+    text = ''.join([c for c in text if c not in string.punctuation])
+    words = text.split()
+    words = [w for w in words if w not in stop_words]
+    return ' '.join(words)
+
+def predict_review(review):
+    clean = clean_text(review)
+    vec = vectorizer.transform([clean])
+    pred = model.predict(vec)[0]
+    
+    return "Fake ❌" if pred == 1 else "Genuine ✅"
